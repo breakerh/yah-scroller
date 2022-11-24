@@ -1,0 +1,96 @@
+.horizontal-scroll {
+  overflow: auto;
+  cursor: grab;
+  --scroll-band: 10px;
+  gap: var(--scroll-band);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  &--dragging {
+    scroll-behavior: auto !important;
+    user-select: none !important;
+    cursor: grabbing;
+    > * {
+      cursor: grabbing;
+    }
+  }
+  &--release {
+    transition: gap .3s ease-in-out;
+  }
+  &--hide-scrollbars {
+    overflow: hidden;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none !important;
+      height: 0 !important;
+      width: 0 !important;
+      background: transparent !important;
+      -webkit-appearance: none !important;
+    }
+  }
+  &--native-scroll {
+    overflow: auto;
+  }
+  > * {
+    display: inline-block;
+    white-space: nowrap;
+    background: white;
+    border-radius: .5rem;
+    padding: 5px 20px;
+    box-shadow: inset 0 0 0 2px #f5f8fa;
+    transition: color 0.25s,
+    transform 0.3s ease-in-out;
+    position: relative;
+    &::before,
+    &::after {
+      box-sizing: inherit;
+      content: '';
+      position: absolute;
+
+      border-radius: .5rem;
+      border: 2px solid transparent;
+      width: 0;
+      height: 0;
+    }
+    &::before {
+      top: 0;
+      left: 0;
+    }
+    &::after {
+      bottom: 0;
+      right: 0;
+      top: 0;
+      left: 0;
+    }
+    &:hover,
+    &.is-active-category{
+      color: var(--border);
+    }
+    &:hover::before,
+    &:hover::after,
+    &.is-active-category::before,
+    &.is-active-category::after {
+      width: 100%;
+      height: 100%;
+    }
+    &:hover::before,
+    &.is-active-category::before {
+      border-top-color: var(--border); // Make borders visible
+      border-right-color: var(--border);
+      transition:
+              width 0.35s ease-in-out, // Width expands first
+              height 0.35s ease-in-out 0.35s; // And then height
+    }
+
+    &:hover::after,
+    &.is-active-category::after {
+      border-bottom-color: var(--border); // Make borders visible
+      border-left-color: var(--border);
+      transition:
+              height 0.35s ease-in-out,
+              width 0.35s ease-in-out 0.35s;
+    }
+  }
+}

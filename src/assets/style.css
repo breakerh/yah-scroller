@@ -1,0 +1,84 @@
+.horizontal-scroll {
+  overflow: auto;
+  cursor: grab;
+  --scroll-band: 10px;
+  gap: var(--scroll-band);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.horizontal-scroll--dragging {
+  scroll-behavior: auto !important;
+  user-select: none !important;
+  cursor: grabbing;
+}
+.horizontal-scroll--dragging > * {
+  cursor: grabbing;
+}
+.horizontal-scroll--release {
+  transition: gap 0.3s ease-in-out;
+}
+.horizontal-scroll--hide-scrollbars {
+  overflow: hidden;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.horizontal-scroll--hide-scrollbars::-webkit-scrollbar {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  background: transparent !important;
+  -webkit-appearance: none !important;
+}
+.horizontal-scroll--native-scroll {
+  overflow: auto;
+}
+.horizontal-scroll > * {
+  display: inline-block;
+  white-space: nowrap;
+  background: white;
+  border-radius: 0.5rem;
+  padding: 5px 20px;
+  box-shadow: inset 0 0 0 2px #f5f8fa;
+  transition: color 0.25s, transform 0.3s ease-in-out;
+  position: relative;
+}
+.horizontal-scroll > *::before, .horizontal-scroll > *::after {
+  box-sizing: inherit;
+  content: "";
+  position: absolute;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  width: 0;
+  height: 0;
+}
+.horizontal-scroll > *::before {
+  top: 0;
+  left: 0;
+}
+.horizontal-scroll > *::after {
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+}
+.horizontal-scroll > *:hover, .horizontal-scroll > *.is-active-category {
+  color: var(--border);
+}
+.horizontal-scroll > *:hover::before, .horizontal-scroll > *:hover::after, .horizontal-scroll > *.is-active-category::before, .horizontal-scroll > *.is-active-category::after {
+  width: 100%;
+  height: 100%;
+}
+.horizontal-scroll > *:hover::before, .horizontal-scroll > *.is-active-category::before {
+  border-top-color: var(--border);
+  border-right-color: var(--border);
+  transition: width 0.35s ease-in-out, height 0.35s ease-in-out 0.35s;
+}
+.horizontal-scroll > *:hover::after, .horizontal-scroll > *.is-active-category::after {
+  border-bottom-color: var(--border);
+  border-left-color: var(--border);
+  transition: height 0.35s ease-in-out, width 0.35s ease-in-out 0.35s;
+}
+
+/*# sourceMappingURL=style.css.map */
