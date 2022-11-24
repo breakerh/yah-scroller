@@ -31,21 +31,21 @@ Add `yah-scroller` to your component:
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { yah-scroller } from 'yah-scroller'
+import { YahScroller } from 'yah-scroller'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <React.StrictMode>
         <div>
             <h2>Simple scroller</h2>
-            <HorizontalScroll className="horizontal-scroll">
+            <YahScroller className="horizontal-scroll">
                 <div key={'c1'} className={'category'}>Category 1</div>
                 <div key={'c2'} className={'category'}>Category 2</div>
                 <div key={'c3'} className={'category'}>Category 3</div>
                 <div key={'c4'} className={'category'}>Category 4</div>
                 <div key={'c5'} className={'category'}>Category 5</div>
                 <div key={'c6'} className={'category'}>Category 6</div>
-            </HorizontalScroll>
+            </YahScroller>
         </div>
     </React.StrictMode>,
 )
